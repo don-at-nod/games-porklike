@@ -1,17 +1,16 @@
 local gfx <const> = playdate.graphics
 
-local entryImage <const> = gfx.image.new("images/entrystairs")
-local exitImage <const> = gfx.image.new("images/exitstairs")
-
 class('Stairs').extends(gfx.sprite)
 
 function Stairs:init(x, y, type)
+	local levelImageTable = gfx.imagetable.new("levels/tileset")
+	
 	self:setZIndex(Z_INDEXES.Stairs)
 	
-	if type == "exit" then
-		self:setImage(exitImage)
-	elseif type == "entry" then
-		self:setImage(entryImage)
+	if type == "entry" then
+		self:setImage(levelImageTable:getImage(3))
+	elseif type == "exit" then
+		self:setImage(levelImageTable:getImage(4))
 	end	
 	
 	self:setCenter(0,0)

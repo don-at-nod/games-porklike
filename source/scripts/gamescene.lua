@@ -16,12 +16,12 @@ ldtk.load("levels/world.ldtk", false)
 class('GameScene').extends()
 
 function GameScene:init()
-	playdate.display.setScale(4) -- 2 = 200 x 120, 4 = 100 x 60
+	playdate.display.setScale(2) -- 2 = 200 x 120, 4 = 100 x 60
 	gfx.setBackgroundColor(gfx.kColorBlack)
 	
 	self:goToLevel("Level_0")
-	self.spawnX = 3 * 8
-	self.spawnY = 5 * 8
+	self.spawnX = 2 * 16
+	self.spawnY = 5 * 16
 	self.player = Player(self.spawnX, self.spawnY)
 end
 
