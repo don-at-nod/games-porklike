@@ -3,6 +3,7 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
+import "CoreLibs/animator"
 
 -- Libraries
 import "scripts/libraries/AnimatedSprite"
@@ -23,3 +24,4 @@ function pd.update()
 	gfx.sprite.update()
 	pd.timer.updateTimers()
 end
+
