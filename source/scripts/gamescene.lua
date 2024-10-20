@@ -11,6 +11,8 @@ Z_INDEXES = {
 	Stairs = 20
 }
 
+GRID = 16
+
 ldtk.load("levels/world.ldtk", false)
 
 class('GameScene').extends()
@@ -20,8 +22,8 @@ function GameScene:init()
 	gfx.setBackgroundColor(gfx.kColorBlack)
 	
 	self:goToLevel("Level_0")
-	self.spawnX = 2 * 16
-	self.spawnY = 5 * 16
+	self.spawnX = 2
+	self.spawnY = 5
 	self.player = Player(self.spawnX, self.spawnY)
 end
 
