@@ -11,7 +11,7 @@
 	"iid": "7cba8950-73f0-11ef-a896-53fec127f004",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 129,
+	"nextUid": 131,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -240,7 +240,7 @@
 		}
 	], "entities": [
 		{
-			"identifier": "EntryStairs",
+			"identifier": "Stairs",
 			"uid": 126,
 			"tags": [],
 			"exportToToc": false,
@@ -272,42 +272,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0,
 			"pivotY": 0,
-			"fieldDefs": []
-		},
-		{
-			"identifier": "ExitStairs",
-			"uid": 127,
-			"tags": [],
-			"exportToToc": false,
-			"allowOutOfBounds": false,
-			"doc": null,
-			"width": 16,
-			"height": 16,
-			"resizableX": false,
-			"resizableY": false,
-			"minWidth": null,
-			"maxWidth": null,
-			"minHeight": null,
-			"maxHeight": null,
-			"keepAspectRatio": false,
-			"tileOpacity": 1,
-			"fillOpacity": 1,
-			"lineOpacity": 1,
-			"hollow": false,
-			"color": "#FEE761",
-			"renderMode": "Rectangle",
-			"showName": true,
-			"tilesetId": null,
-			"tileRenderMode": "FitInside",
-			"tileRect": null,
-			"uiTileRect": { "tilesetUid": 3, "x": 24, "y": 0, "w": 8, "h": 8 },
-			"nineSliceBorders": [],
-			"maxCount": 0,
-			"limitScope": "PerLevel",
-			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "Stairs",
+					"doc": null,
+					"__type": "LocalEnum.Stairs",
+					"uid": 130,
+					"type": "F_Enum(129)",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -329,7 +332,10 @@
 			"savedSelections": [],
 			"cachedPixelData": { "opaqueTiles": "11111", "averageColors": "f666f111f777f999f000" }
 		}
-	], "enums": [{ "identifier": "Tile", "uid": 4, "values": [{ "id": "Solid", "tileRect": null, "color": 12470831 }], "iconTilesetUid": 3, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [] },
+	], "enums": [
+		{ "identifier": "Tile", "uid": 4, "values": [{ "id": "Solid", "tileRect": null, "color": 12470831 }], "iconTilesetUid": 3, "externalRelPath": null, "externalFileChecksum": null, "tags": [] },
+		{ "identifier": "Stairs", "uid": 129, "values": [ { "id": "Entry", "tileRect": null, "color": 12470831 }, { "id": "Exit", "tileRect": null, "color": 14120515 } ], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }
+	], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
 			"identifier": "Level_0",
@@ -432,23 +438,7 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "ExitStairs",
-							"__grid": [10,3],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#FEE761",
-							"iid": "0a914840-73f0-11ef-a534-ef5a467e28b9",
-							"width": 16,
-							"height": 16,
-							"defUid": 127,
-							"px": [160,48],
-							"fieldInstances": [],
-							"__worldX": 160,
-							"__worldY": 48
-						},
-						{
-							"__identifier": "EntryStairs",
+							"__identifier": "Stairs",
 							"__grid": [2,5],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -459,9 +449,31 @@
 							"height": 16,
 							"defUid": 126,
 							"px": [32,80],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "Stairs", "__type": "LocalEnum.Stairs", "__value": "Entry", "__tile": null, "defUid": 130, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["Entry"]
+							}] }],
 							"__worldX": 32,
 							"__worldY": 80
+						},
+						{
+							"__identifier": "Stairs",
+							"__grid": [10,3],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#5A6988",
+							"iid": "d992dbd0-73f0-11ef-83e7-a3e802f866d1",
+							"width": 16,
+							"height": 16,
+							"defUid": 126,
+							"px": [160,48],
+							"fieldInstances": [{ "__identifier": "Stairs", "__type": "LocalEnum.Stairs", "__value": "Exit", "__tile": null, "defUid": 130, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["Exit"]
+							}] }],
+							"__worldX": 160,
+							"__worldY": 48
 						}
 					]
 				},
