@@ -22,7 +22,7 @@ function GameScene:init()
 	gfx.setBackgroundColor(gfx.kColorBlack)
 	
 	self:goToLevel("Level_0")
-	self.spawnX = 2
+	self.spawnX = 3
 	self.spawnY = 5
 	self.player = Player(self.spawnX, self.spawnY)
 end
@@ -52,10 +52,8 @@ function GameScene:goToLevel(levelName)
 	for _, entity in ipairs(ldtk.get_entities(levelName)) do
 		local entityX, entityY = entity.position.x, entity.position.y
 		local entityName = entity.name
-		if entityName == "EntryStairs" then
-			Stairs(entityX, entityY, "entry")
-		elseif entityName == "ExitStairs" then
-			Stairs(entityX, entityY, "exit")
+		if entityName == "Stairs" then
+			Stairs(entityX, entityY, entity)
 		end
 	end
 end
