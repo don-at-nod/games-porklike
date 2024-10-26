@@ -49,8 +49,6 @@ end
 function Player:handleInput()
 	if self.button_buffer == -1 then
 		self.button_buffer = self:getButton()
-	else
-		print(self.button_buffer)
 	end
 	if  self.currentState == "idle" then
 		self:doButton(self.button_buffer)
