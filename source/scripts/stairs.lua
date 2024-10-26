@@ -11,7 +11,7 @@ function Stairs:init(x, y, entity)
 	if self.type == "Entry" then
 		self:setImage(levelImageTable:getImage(3))
 	elseif self.type == "Exit" then
-		self:setImage(levelImageTable:getImage(4))
+		self:setImage(levelImageTable:getImage(10))
 	end	
 
 	self:setZIndex(Z_INDEXES.Stairs)	

@@ -16,7 +16,7 @@ local gfx <const> = playdate.graphics
 -- Game
 import "scripts/gameScene"
 import "scripts/player"
-import "scripts/stairs"
+import "scripts/interactable"
 
 GameScene()
 
