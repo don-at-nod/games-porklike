@@ -7,6 +7,7 @@ function Player:init(x, y)
 	local playerImageTable = gfx.imagetable.new("images/player-table-16-16")
 	Player.super.init(self, playerImageTable)
 	
+	self.button_buffer=-1
 	self.grid_x = x
 	self.grid_y = y
 	self.offset_x = 0
@@ -18,15 +19,15 @@ function Player:init(x, y)
 	self.timer = 1
 	
 	self:addState("idle", 1, 1)
-	self:addState("move", 1, 4, {tickStep = 2}) -- p_ani
-	self:addState("bump", 1, 4, {tickStep = 2}) -- p_ani
+	self:addState("move", 1, 3, {tickStep = 2}) -- p_ani
+	self:addState("bump", 3, 4, {tickStep = 2}) -- p_ani
 	self:playAnimation()
 	
 	self:setCenter(0,0)
 	self:moveTo(self.grid_x * GRID, self.grid_y * GRID)
 	self:setZIndex(Z_INDEXES.Player)
 	self:setTag(TAGS.Player)
-	self:setCollideRect(0,0,16,16)
+	self:setCollideRect(3,6,10,8)
 	self:changeState("idle")
 end
 
@@ -40,20 +41,20 @@ end
 
 function Player:update()
 	self:updateAnimation()
-	self:handleInput()
+	self:handleInput()	
 	--self:handleMovementAndCollisions()
 	self:updatePlayer()
 end
 
 function Player:handleInput()
-	local dirx = {-1, 1, 0, 0}
-	local diry = {0, 0, -1, 1}
-	local btns = {pd.kButtonLeft, pd.kButtonRight, pd.kButtonUp, pd.kButtonDown}
-	
-	for i=1, 4 do
-		if pd.buttonJustPressed(btns[i]) and self.currentState == "idle" then
-			self:movePlayer(dirx[i], diry[i])
-		end
+	if self.button_buffer == -1 then
+		self.button_buffer = self:getButton()
+	else
+		print(self.button_buffer)
+	end
+	if  self.currentState == "idle" then
+		self:doButton(self.button_buffer)
+		self.button_buffer = -1
 	end
 end
 
@@ -100,12 +101,12 @@ function Player:movePlayer(dx, dy)
 			local collisionTag = collisionObject:getTag()
 			
 			if collisionType == gfx.sprite.kCollisionTypeFreeze then
-				-- wall
+				-- any wall/entity
 				allow_move = false
-			end
-			
-			if collisionTag == TAGS.Stairs then
-				collisionObject:use(self)
+				
+				if collisionTag == TAGS.Interactable then
+					collisionObject:use(self, collision.normal)
+				end
 			end
 		end
 	end
@@ -125,3 +126,32 @@ function Player:movePlayer(dx, dy)
 		self:changeState("move")
 	end
 end
+
+-- Gameplay (video 6)
+
+function Player:getButton()
+	local dirx = {-1, 1, 0, 0}
+	local diry = {0, 0, -1, 1}
+	local btns = {pd.kButtonLeft, pd.kButtonRight, pd.kButtonUp, pd.kButtonDown, pd.kButtonA, pd.kButtonB}
+	
+	for i=1, 6 do
+		if pd.buttonJustPressed(btns[i]) then
+			return i
+		end
+	end
+	return -1
+end
+
+function Player:doButton(button)
+	local dirx = {-1, 1, 0, 0}
+	local diry = {0, 0, -1, 1}
+	local btns = {pd.kButtonLeft, pd.kButtonRight, pd.kButtonUp, pd.kButtonDown}
+	
+	if button < 0 then return end
+	if button > 0 and button < 5 then
+		self:movePlayer(dirx[button], diry[button])
+		return
+	end
+	-- menu button
+end
+	
