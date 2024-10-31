@@ -39,13 +39,19 @@ function Interactable:use(player, normal)
 	-- vase (remove)
 	if self.name == "Vase" or self.name == "Door" then
 		self:remove()
+		if self.name == "Vase" then
+			Sound:play('badvase')
+		elseif self.name == "Door" then
+			Sound:play('door')
+		end
 	end
 	-- chest (open)
-	if normal.y == 1 then
+	if self.name == "Chest" and normal.y == 1 then
 		if self.fields.Chests == "Large" then
 			self:setImage(levelImageTable:getImage(14))
 		elseif self.fields.Chests == "Small" then
 			self:setImage(levelImageTable:getImage(13))
 		end
+		Sound:play('chest')
 	end
 end
