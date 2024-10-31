@@ -17,10 +17,16 @@ local gfx <const> = playdate.graphics
 import "scripts/gameScene"
 import "scripts/player"
 import "scripts/interactable"
+import "scripts/sounds"
+import "scripts/window"
 
 GameScene()
 
 function pd.update()
 	gfx.sprite.update()
 	pd.timer.updateTimers()
+end
+
+function print_table(tbl)
+	for k, v in pairs(tbl) do print(k, v) end
 end

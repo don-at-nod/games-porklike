@@ -546,7 +546,7 @@
 			"enumTags": [{ "enumValueId": "Solid", "tileIds": [0] }],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "11111110011011", "averageColors": "faaaf222f888f999f999faaafaaa00000000f888f8880000faaafaaa" }
+			"cachedPixelData": { "opaqueTiles": "11111110011111", "averageColors": "faaaf222f888f999faaafaaafaaa00000000f888f888f999faaafaaa" }
 		}
 	], "enums": [
 		{ "identifier": "Tile", "uid": 4, "values": [{ "id": "Solid", "tileRect": null, "color": 12470831 }], "iconTilesetUid": 3, "externalRelPath": null, "externalFileChecksum": null, "tags": [] },

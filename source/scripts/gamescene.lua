@@ -10,7 +10,8 @@ TAGS = {
 
 Z_INDEXES = {
 	Player = 100,
-	Interactable = 20
+	Interactable = 20,
+	Window = 200
 }
 
 GRID = 16
@@ -18,15 +19,12 @@ GRID = 16
 ldtk.load("levels/world.ldtk", false)
 
 playdate.display.setScale(2) -- 2 = 200 x 120, 4 = 100 x 60
-local w, h = playdate.display.getSize()
+w, h = playdate.display.getSize()
 
-local maxX, minX = w + GRID, -GRID
-local maxY, minY = h + GRID, -GRID
 local cameraX = 0
 local cameraY = 0
 
-
-class('GameScene').extends(playdate.graphics.sprite)
+class('GameScene').extends(gfx.sprite)
 
 function GameScene:init()
 	gfx.setBackgroundColor(gfx.kColorBlack)
@@ -44,6 +42,8 @@ function GameScene:goToLevel(levelName)
 	gfx.sprite.removeAll()
 	
 	self.levelName = levelName
+	self.bounds = ldtk.get_rect(self.levelName)
+	
 	for layerName, layer in pairs(ldtk.get_layers(levelName)) do
 		if layer.tiles then
 			local tilemap = ldtk.create_tilemap(levelName, layerName)
@@ -84,8 +84,9 @@ end
 
 function GameScene:updateCamera()	
 	-- allows to not move every time player does
-	local newX = max(min(self.player.x - GRID*3, maxX), minX)
-	local newY = max(min(self.player.y - GRID*3, maxY), minY)
+	local newX = floor(max(min(self.player.x - w/2 + GRID, self.bounds.width - w), 0))
+	local newY = floor(max(min(self.player.y - h/2 + GRID, self.bounds.height - h), 0))
+	
 	if newX ~= -cameraX or newY ~= -cameraY then
 		cameraX = -newX
 		cameraY = -newY

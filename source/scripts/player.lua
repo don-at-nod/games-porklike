@@ -99,8 +99,10 @@ function Player:movePlayer(dx, dy)
 			local collisionTag = collisionObject:getTag()
 			
 			if collisionType == gfx.sprite.kCollisionTypeFreeze then
-				-- any wall/entity
-				allow_move = false
+				-- any wall/entity except door
+				if collisionObject.name ~= "Door" then
+					allow_move = false
+				end
 				
 				if collisionTag == TAGS.Interactable then
 					collisionObject:use(self, collision.normal)
@@ -115,6 +117,7 @@ function Player:movePlayer(dx, dy)
 		self.timer = 0
 		self:changeState("bump")
 	else
+		Sound:play('walk')
 		self.grid_x += dx
 		self.grid_y += dy
 			
@@ -151,5 +154,12 @@ function Player:doButton(button)
 		return
 	end
 	-- menu button
+	if button == 5 then
+		if window then
+			window:closeWindow()
+			window = nil
+		else
+			window = Window:new(w/2 - GRID*11/2, h/2 - GRID*6/2, 11*GRID, GRID*6, {"Hello World", "This is Line 2"})
+		end
+	end
 end
-	
