@@ -47,12 +47,20 @@ function Player:update()
 end
 
 function Player:handleInput()
-	if self.button_buffer == -1 then
-		self.button_buffer = self:getButton()
-	end
-	if  self.currentState == "idle" then
-		self:doButton(self.button_buffer)
-		self.button_buffer = -1
+	
+	if talkWind ~= nil then
+		-- confirm button
+		if self:getButton() == 5 then
+			talkWind:closeWindow()
+		end
+	else	
+		if self.button_buffer == -1 then
+			self.button_buffer = self:getButton()
+		end
+		if  self.currentState == "idle" then
+			self:doButton(self.button_buffer)
+			self.button_buffer = -1
+		end
 	end
 end
 
@@ -152,14 +160,5 @@ function Player:doButton(button)
 	if button > 0 and button < 5 then
 		self:movePlayer(dirx[button], diry[button])
 		return
-	end
-	-- menu button
-	if button == 5 then
-		if window then
-			window:closeWindow()
-			window = nil
-		else
-			window = Window:new(w/2 - GRID*11/2, h/2 - GRID*6/2, 11*GRID, GRID*6, {"Hello World", "This is Line 2"})
-		end
 	end
 end
