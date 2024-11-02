@@ -78,7 +78,7 @@ end
 
 function Window:showTimedMessage(txt, dur)
 	local width, height = gfx.getTextSize(txt)
-	local w = Window:new((w - width) / 2, (h - height) / 2, width, height, {txt}, dur)
+	local w = Window:new((w - width) / 2, (h - height) / 2, width, height, txt, dur)
 end
 
 function Window:showMessage(txt)
