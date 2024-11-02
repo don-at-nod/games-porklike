@@ -44,14 +44,18 @@ function Interactable:use(player, normal)
 		elseif self.name == "Door" then
 			Sound:play('door')
 		end
-	end
-	-- chest (open)
-	if self.name == "Chest" and normal.y == 1 then
+	elseif self.name == "Chest" and normal.y == 1 then
+		-- chest (open)
 		if self.fields.Chests == "Large" then
 			self:setImage(levelImageTable:getImage(14))
 		elseif self.fields.Chests == "Small" then
 			self:setImage(levelImageTable:getImage(13))
 		end
 		Sound:play('chest')
+		Window:showTimedMessage("You got something", 120)
+	elseif self.name == "Sign" and normal.y == 1 then
+		-- stone tablet (read)
+		--window = Window:new(w/2 - GRID*11/2, h/2 - GRID*6/2, 11*GRID, GRID*6, {"Welcome to the", "world of Porklike"})
+		Window:showMessage(self.fields.Message)
 	end
 end

@@ -21,6 +21,8 @@ ldtk.load("levels/world.ldtk", false)
 playdate.display.setScale(2) -- 2 = 200 x 120, 4 = 100 x 60
 w, h = playdate.display.getSize()
 
+talkWind = nil
+
 local cameraX = 0
 local cameraY = 0
 

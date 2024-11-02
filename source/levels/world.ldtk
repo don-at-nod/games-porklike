@@ -11,7 +11,7 @@
 	"iid": "7cba8950-73f0-11ef-a896-53fec127f004",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 144,
+	"nextUid": 145,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -453,7 +453,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0,
 			"pivotY": 0,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "Message",
+					"doc": null,
+					"__type": "String",
+					"uid": 144,
+					"type": "F_Text",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		},
 		{
 			"identifier": "Chest",
@@ -1108,7 +1146,10 @@
 							"height": 16,
 							"defUid": 140,
 							"px": [32,64],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "Message", "__type": "String", "__value": "Welcome to Porklike\n\nClimb the tower\nto obtain the\ngolden kielbasa", "__tile": null, "defUid": 144, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["Welcome to Porklike\\n\\nClimb the tower\\nto obtain the\\ngolden kielbasa"]
+							}] }],
 							"__worldX": 32,
 							"__worldY": 64
 						},
@@ -1149,6 +1190,44 @@
 							}] }],
 							"__worldX": 32,
 							"__worldY": 192
+						},
+						{
+							"__identifier": "Sign",
+							"__grid": [11,3],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 3, "x": 64, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#D77643",
+							"iid": "c53a7dc0-73f0-11ef-8ad6-0fc1a7d71bb9",
+							"width": 16,
+							"height": 16,
+							"defUid": 140,
+							"px": [176,48],
+							"fieldInstances": [{ "__identifier": "Message", "__type": "String", "__value": "This is the 2nd message", "__tile": null, "defUid": 144, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["This is the 2nd message"]
+							}] }],
+							"__worldX": 176,
+							"__worldY": 48
+						},
+						{
+							"__identifier": "Sign",
+							"__grid": [22,5],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 3, "x": 64, "y": 16, "w": 16, "h": 16 },
+							"__smartColor": "#D77643",
+							"iid": "c8778050-73f0-11ef-8ad6-fdd9b34bf85a",
+							"width": 16,
+							"height": 16,
+							"defUid": 140,
+							"px": [352,80],
+							"fieldInstances": [{ "__identifier": "Message", "__type": "String", "__value": "You're almost there!", "__tile": null, "defUid": 144, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["You're almost there!"]
+							}] }],
+							"__worldX": 352,
+							"__worldY": 80
 						}
 					]
 				},
